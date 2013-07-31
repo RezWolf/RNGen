@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+void compare(int a[], int size)
+{
+ int j;
+ int even =0,odd=0;
+ 
+ for (j=0; j < size; j++)
+ {
+  if ((a[j] % 2) == 0)
+   even++;
+  else if ((a[j] % 2) != 0)
+   odd++;
+ } 
+ printf("Even: %d | Odd: %d\n", even, odd);
+}
+
+void rollDie(int nSides, int nThrows)
+{
+   int d=0, i;
+   int arr[nThrows]; 
+   for (i=0; i < nThrows; i++)
+   {
+    d = (rand() % nSides) + 1;
+    arr[i] = d;
+   }
+   compare(arr, nThrows);
+}
+
+int main()
+{
+  int side, throws;
+  
+  side = 6;
+  throws = 1000;
+  
+  srand(time(NULL));
+  
+  printf("This was made to help chris decide what race to play in FFXIV: ARR\n This runs a Random Number Generator 1000 times and prints the results\n");
+  rollDie(side,throws);
+  
+  printf("GOOD BYE!\n");
+}
